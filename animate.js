@@ -16,7 +16,7 @@ function scrollAction(){
         // }
         if(flag){
             node[i].style.height = 130;
-            node[i].getElementsByClassName(".rq_num")[0].setAttribute("name","on");
+            node[i].getElementsByClassName("rq_num")[0].setAttribute("name","on");
             node[i].addEventListener("transitionend",numberAni);
         }
     }
@@ -43,21 +43,22 @@ function isElementInviewport(el,offset){
     //     index +=10;
     //     if(index == 10){clearInterval(time);} 
     // },20);
+var id = -1;
+var rq = ['88','58','63','72','53','92']
 function numberAni(){
+    id++;
     var onAni = document.getElementsByName("on");
-    for(var i=0;i<onAni.length;i++){
-        var num = onAni[0].innerText;
-        var timeline = 300;
-        var index = 0;
-        var time = setInterval(function(){
-            onAni[0].innerText=index;
-            index +=10;
-            if(index == 110){
-                clearInterval(time);
-                onAni[0].innerText=num;
-                time = 0;
-            } 
-        },20);
-    }
-    
+    var num = rq[id];
+    var timeline = 300;
+    var index = "00";
+    var timer = setInterval(function(){
+        onAni[id].innerText = index;
+        index = parseInt(index);
+        index +=10;
+        if(index == 110){
+            clearInterval(timer);
+            onAni[id].innerText=num;
+            timer = 0;
+        } 
+    },20);
 }
